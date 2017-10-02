@@ -8,6 +8,8 @@
 #include <iostream>
 #include <set>
 #include <fstream>
+#include <vector>
+#include <list>
 
 using namespace std;
 
@@ -21,6 +23,10 @@ public:
     void AddNum(T num);
 
     void AddNum(const std::multiset<T> &numbers);
+
+    void AddNum(const vector<T> &numbers);
+
+    void AddNum(const list<T> &numbers);
 
     void AddNumsFromFile(const char *filename);
 
@@ -133,6 +139,18 @@ void StatisticMultiset<T>::AddNumsFromFile(const char *filename) {
 
 template <class T>
 void StatisticMultiset<T>::AddNum(const std::multiset<T> &numbers) {
+    for (auto it : numbers)
+        AddNum(it);
+}
+
+template <class T>
+void StatisticMultiset<T>::AddNum(const vector<T> &numbers) {
+    for (auto it : numbers)
+        AddNum(it);
+}
+
+template <class T>
+void StatisticMultiset<T>::AddNum(const list <T> &numbers) {
     for (auto it : numbers)
         AddNum(it);
 }
